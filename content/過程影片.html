@@ -2,7 +2,7 @@
         <head>
         <title>cad2025_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,30 +142,8 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">第九階段：載入繪圖控制器 (Final Simulation) << <a href='第九階段：載入繪圖控制器 (Final Simulation).html'>Previous</a> <a href='過程影片.html'>Next</a> >> 過程影片<br /><h1>後半部分容易出錯指南</h1>
-<p></p>
-<ul>
-<li>
-<p data-path-to-node="24,0,0"><b data-index-in-node="0" data-path-to-node="24,0,0">Anchor (錨點) 是絕對坐標還是相對坐標？</b></p>
-<p data-path-to-node="24,0,1,0,0">這是在 Webots 最容易搞混的地方。</p>
-<p data-path-to-node="24,0,1,1,0"><code data-index-in-node="0" data-path-to-node="24,0,1,1,0">HingeJoint</code> 的 <code data-index-in-node="13" data-path-to-node="24,0,1,1,0">anchor</code> 是相對於<b data-index-in-node="24" data-path-to-node="24,0,1,1,0">父節點 (Parent Solid)</b> 的坐標系，但通常建議在建模時透過 <code data-index-in-node="60" data-path-to-node="24,0,1,1,0">Pose</code> 將子節點的原點移動到關節處，這樣 <code data-index-in-node="82" data-path-to-node="24,0,1,1,0">anchor</code> 就可以保持 <code data-index-in-node="95" data-path-to-node="24,0,1,1,0">0 0 0</code>，會比較好管理。</p>
-<p data-path-to-node="24,0,1,2,0"><i data-index-in-node="0" data-path-to-node="24,0,1,2,0">影片中的做法</i>：右臂的第一個關節 anchor 設為 <code data-index-in-node="26" data-path-to-node="24,0,1,2,0">0.2 0 0</code>，這是因為它是直接掛在 Robot (原點) 下面，所以必須手動指到右邊底座的位置。</p>
-</li>
-<li>
-<p data-path-to-node="24,1,0"><b data-index-in-node="0" data-path-to-node="24,1,0">SolidReference 的限制</b></p>
-<p data-path-to-node="24,1,1,0,0">它只能用在 <code data-index-in-node="6" data-path-to-node="24,1,1,0,0">endPoint</code>。</p>
-<p data-path-to-node="24,1,1,1,0">被參照的物件 (<code data-index-in-node="8" data-path-to-node="24,1,1,1,0">LINK3</code>) 必須已經存在且有定義 <code data-index-in-node="26" data-path-to-node="24,1,1,1,0">DEF</code>。</p>
-<p data-path-to-node="24,1,1,2,0">連接的兩端都必須有 <code data-index-in-node="10" data-path-to-node="24,1,1,2,0">Physics</code> 屬性，否則約束力 (Constraints) 無法建立。</p>
-</li>
-<li>
-<p data-path-to-node="24,2,0"><b data-index-in-node="0" data-path-to-node="24,2,0">Z-Fighting (重疊閃爍) 與碰撞</b></p>
-<p data-path-to-node="24,2,1,0,0">因為這是 2D 平面繪圖機，所有連桿都在 XY 平面上。</p>
-<p data-path-to-node="24,2,1,1,0">為了不讓連桿互相穿透，<b data-index-in-node="11" data-path-to-node="24,2,1,1,0">Z 軸的高度層級 (Layering)</b> 很重要。</p>
-<p data-path-to-node="24,2,1,2,0">例如：左臂 Z=0.03，右臂 Z=0.05，連結處 Z=0.04。手動調整這些微小的 Z 值，能讓模擬更穩定且視覺更正確。</p>
-</li>
-</ul>
-<p></p>
-<br />第九階段：載入繪圖控制器 (Final Simulation) << <a href='第九階段：載入繪圖控制器 (Final Simulation).html'>Previous</a> <a href='過程影片.html'>Next</a> >> 過程影片</div>
+    <div id="tipue_search_content">後半部分容易出錯指南 << <a href='後半部分容易出錯指南.html'>Previous</a> <a href='成果展示.html'>Next</a> >> 成果展示<br /><h1>過程影片</h1>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="630" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/e6Ii33U7YDo?si=2IvKRMf_pftKiKln" title="YouTube video player" width="1120"></iframe></p><br />後半部分容易出錯指南 << <a href='後半部分容易出錯指南.html'>Previous</a> <a href='成果展示.html'>Next</a> >> 成果展示</div>
         
     <!-- footer -->
       <div class="container">
