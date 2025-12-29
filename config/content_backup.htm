@@ -14,7 +14,7 @@
 <p style="padding-left: 60px;">w9 期中自評、w18 期末自評</p>
 <h1>plotter</h1>
 <h2>製作過程簡述</h2>
-<h3><b data-index-in-node="0" data-path-to-node="1">第一階段：建立基礎機器人與底座 (Base Setup)</b></h3>
+<h3>第一階段：建立基礎機器人與底座 (Base Setup)</h3>
 <ol data-path-to-node="2" start="1">
 <li>
 <p data-path-to-node="2,0,0"><b data-index-in-node="0" data-path-to-node="2,0,0">建立 Robot 節點</b>：</p>
@@ -34,7 +34,7 @@
 <img alt="" height="72" src="/images/supervison.jpg" width="238"/></li>
 </ol>
 <p></p>
-<h3><b data-index-in-node="0" data-path-to-node="4">第二階段：建立第一節手臂 (Link 1) 與馬達</b></h3>
+<h3>第二階段：建立第一節手臂 (Link 1) 與馬達</h3>
 <ol data-path-to-node="5" start="1">
 <li>
 <p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">新增關節 (HingeJoint)</b>：</p>
@@ -58,23 +58,22 @@
 <p data-path-to-node="5,3,1,1,0"><b data-index-in-node="0" data-path-to-node="5,3,1,1,0">修正步驟</b>：將 Solid 內部的 Shape 沿 Y 軸移動 <code data-index-in-node="31" data-path-to-node="5,3,1,1,0">0.1</code> (長度 0.2 的一半)。這樣旋轉中心 (Joint) 就會位於連桿的起始端。</p>
 <img alt="" height="358" src="/images/修正連趕1位置.jpg" width="517"/></li>
 </ol>
-<h3 data-path-to-node="7"><b data-index-in-node="0" data-path-to-node="7">第三階段：撰寫控制器並測試 (Controller)</b></h3>
+<h3>第三階段：撰寫控制器並測試 (Controller)</h3>
 <ol data-path-to-node="8" start="1">
 <li>
 <p data-path-to-node="8,0,0"><b data-index-in-node="0" data-path-to-node="8,0,0">關聯控制器</b>：</p>
 <p data-path-to-node="8,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="8,0,1,0,0">controller</code> 欄位選擇 <code data-index-in-node="26" data-path-to-node="8,0,1,0,0">New...</code>，建立 Python 控制器。</p>
-</li>
+<img alt="" height="569" src="/images/控制程式.png" width="483"/></li>
 <li>
 <p data-path-to-node="8,1,0"><b data-index-in-node="0" data-path-to-node="8,1,0">撰寫程式碼</b>：</p>
 <p data-path-to-node="8,1,1,0,0">獲取馬達：<code data-index-in-node="5" data-path-to-node="8,1,1,0,0">motor = robot.getDevice("T1")</code></p>
 <p data-path-to-node="8,1,1,1,0">角度轉換：Webots 使用弧度 (Radian)。需將角度 (如 90度) 乘上 <code data-index-in-node="42" data-path-to-node="8,1,1,1,0">3.14159 / 180</code>。</p>
 <p data-path-to-node="8,1,1,2,0">設定位置：<code data-index-in-node="5" data-path-to-node="8,1,1,2,0">motor.setPosition(1.57)</code> (讓它轉 90 度測試)。</p>
-</li>
+<img alt="" height="587" src="/images/控制程式碼.png" width="565"/></li>
 <li>
 <p data-path-to-node="8,2,0"><b data-index-in-node="0" data-path-to-node="8,2,0">測試</b>：存檔並執行模擬，確認手臂是否有正確轉動。</p>
-</li>
-</ol>
-<h2>模型</h2>
+<img alt="" height="44" src="/images/存檔.png" width="453"/></li>
+</ol><h2>模型</h2>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>

@@ -73,7 +73,30 @@
 <li>
 <p data-path-to-node="8,2,0"><b data-index-in-node="0" data-path-to-node="8,2,0">測試</b>：存檔並執行模擬，確認手臂是否有正確轉動。</p>
 <img alt="" height="44" src="/images/存檔.png" width="453"/></li>
-</ol><h2>模型</h2>
+</ol>
+<p><b data-index-in-node="0" data-path-to-node="10">第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</b></p>
+<p data-path-to-node="11">這裡不能直接加 Joint，因為 Link 2 與 Link 1 之間有特定的設計角度 (69.62度)，且位置在 Link 1 的末端。</p>
+<ol data-path-to-node="12" start="1">
+<li>
+<p data-path-to-node="12,0,0"><b data-index-in-node="0" data-path-to-node="12,0,0">使用 Pose 節點進行坐標轉換</b>：</p>
+<p data-path-to-node="12,0,1,0,0">在 Link 1 的 <code data-index-in-node="11" data-path-to-node="12,0,1,0,0">children</code> 下，<b data-index-in-node="22" data-path-to-node="12,0,1,0,0">不要直接加 HingeJoint</b>，而是先加一個 <code data-index-in-node="46" data-path-to-node="12,0,1,0,0">Pose</code> 節點。</p>
+<p data-path-to-node="12,0,1,1,0"><b data-index-in-node="0" data-path-to-node="12,0,1,1,0">位移 (Translation)</b>：將 Pose 移動到 Link 1 的末端 (Y=0.2)。</p>
+<p data-path-to-node="12,0,1,2,0"><b data-index-in-node="0" data-path-to-node="12,0,1,2,0">旋轉 (Rotation)</b>：設定 Pose 的 <code data-index-in-node="24" data-path-to-node="12,0,1,2,0">rotation</code> 為 <code data-index-in-node="35" data-path-to-node="12,0,1,2,0">0 0 1</code> (Z軸)，角度設為 <code data-index-in-node="51" data-path-to-node="12,0,1,2,0">-1.215</code> (即 -69.62 度轉為弧度)。</p>
+<p data-path-to-node="12,0,1,3,0"><i data-index-in-node="0" data-path-to-node="12,0,1,3,0">這一步是為了建立一個新的「局部坐標系」，讓接下來的關節長在這個歪斜的方向上。</i></p>
+</li>
+<li>
+<p data-path-to-node="12,1,0"><b data-index-in-node="0" data-path-to-node="12,1,0">新增第二個關節</b>：</p>
+<p data-path-to-node="12,1,1,0,0">在這個 <code data-index-in-node="4" data-path-to-node="12,1,1,0,0">Pose</code> 的 <code data-index-in-node="11" data-path-to-node="12,1,1,0,0">children</code> 下，才新增 <code data-index-in-node="26" data-path-to-node="12,1,1,0,0">HingeJoint</code> (J2)。</p>
+<p data-path-to-node="12,1,1,1,0">設定馬達 <code data-index-in-node="5" data-path-to-node="12,1,1,1,0">name</code> 為 <code data-index-in-node="12" data-path-to-node="12,1,1,1,0">"T2"</code>。</p>
+</li>
+<li>
+<p data-path-to-node="12,2,0"><b data-index-in-node="0" data-path-to-node="12,2,0">建立 Link 2 實體</b>：</p>
+<p data-path-to-node="12,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="12,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="12,2,1,0,0">Solid</code>。</p>
+<p data-path-to-node="12,2,1,1,0">外型：長度為 <code data-index-in-node="7" data-path-to-node="12,2,1,1,0">0.27</code>。</p>
+<p data-path-to-node="12,2,1,2,0"><b data-index-in-node="0" data-path-to-node="12,2,1,2,0">修正位置</b>：將 Shape 沿 Y 軸移動 <code data-index-in-node="21" data-path-to-node="12,2,1,2,0">0.135</code> (0.27 的一半)，確保旋轉點在端點。</p>
+</li>
+</ol>
+<h2>模型</h2>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>
