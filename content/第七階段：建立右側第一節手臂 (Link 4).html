@@ -142,31 +142,37 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)<br /><h1>第二階段：建立第一節手臂 (Link 1) 與馬達</h1>
-<ol data-path-to-node="5" start="1">
+    <div id="tipue_search_content">第六階段：準備工作與定義關鍵節點 (Preparation) << <a href='第六階段：準備工作與定義關鍵節點 (Preparation).html'>Previous</a> <a href='第八階段：閉合迴路 (Closing the Loop via SolidReference).html'>Next</a> >> 第八階段：閉合迴路 (Closing the Loop via SolidReference)<br /><h1>第七階段：建立右側第一節手臂 (Link 4)</h1>
+<p data-path-to-node="8">這一步與左臂相似，但要注意坐標系的變換。</p>
+<ol data-path-to-node="9" start="1">
 <li>
-<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">新增關節 (HingeJoint)</b>：</p>
-<p data-path-to-node="5,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="5,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="5,0,1,0,0">HingeJoint</code>。</p>
-<p data-path-to-node="5,0,1,1,0"><b data-index-in-node="0" data-path-to-node="5,0,1,1,0">參數設定</b>：展開 <code data-index-in-node="8" data-path-to-node="5,0,1,1,0">jointParameters</code>，確認 <code data-index-in-node="27" data-path-to-node="5,0,1,1,0">anchor</code> (錨點) 為 <code data-index-in-node="41" data-path-to-node="5,0,1,1,0">0 0 0</code>。將 <code data-index-in-node="49" data-path-to-node="5,0,1,1,0">axis</code> (旋轉軸) 改為 <code data-index-in-node="63" data-path-to-node="5,0,1,1,0">0 0 1</code> (繞 Z 軸旋轉)。</p>
-<img alt="" height="420" src="./../images/關節1.jpg" width="403"/></li>
+<p data-path-to-node="9,0,0"><b data-index-in-node="0" data-path-to-node="9,0,0">新增關節 (JOINT4)</b>：</p>
+<p data-path-to-node="9,0,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,0,1,0,0">Robot</code> 的 <code data-index-in-node="10" data-path-to-node="9,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="9,0,1,0,0">HingeJoint</code>。</p>
+<p data-path-to-node="9,0,1,1,0"><b data-index-in-node="0" data-path-to-node="9,0,1,1,0">關鍵設定 - Anchor (錨點)</b>：將 <code data-index-in-node="21" data-path-to-node="9,0,1,1,0">jointParameters</code> -&gt; <code data-index-in-node="40" data-path-to-node="9,0,1,1,0">anchor</code> 設為 <code data-index-in-node="50" data-path-to-node="9,0,1,1,0">0.2 0 0</code>。</p>
+<p data-path-to-node="9,0,1,2,0"><i data-index-in-node="0" data-path-to-node="9,0,1,2,0">注意：因為右臂的旋轉中心在右邊底座，若不設此值，它會繞著世界原點 (0,0,0) 旋轉，導致結構解體。</i></p>
+<i data-index-in-node="0" data-path-to-node="9,0,1,2,0"></i><i data-index-in-node="0" data-path-to-node="9,0,1,2,0"><img alt="" height="98" src="./../images/關節4.png" width="524"/></i></li>
 <li>
-<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">加入馬達 (Motor)</b>：</p>
-<p data-path-to-node="5,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,1,1,0,0">device</code> 欄位新增 <code data-index-in-node="14" data-path-to-node="5,1,1,0,0">RotationalMotor</code>。</p>
-<p data-path-to-node="5,1,1,1,0"><b data-index-in-node="0" data-path-to-node="5,1,1,1,0">重要</b>：將馬達 <code data-index-in-node="7" data-path-to-node="5,1,1,1,0">name</code> 命名為 <code data-index-in-node="16" data-path-to-node="5,1,1,1,0">"T1"</code> (程式碼控制時會用到)。</p>
-<img alt="" height="79" src="./../images/馬達T1.jpg" width="328"/></li>
+<p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0">設置馬達 (T2)</b>：</p>
+<p data-path-to-node="9,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,1,1,0,0">device</code> 欄位加入 <code data-index-in-node="14" data-path-to-node="9,1,1,0,0">RotationalMotor</code>，命名為 <code data-index-in-node="34" data-path-to-node="9,1,1,0,0">T2</code>。</p>
+<img alt="" height="177" src="./../images/馬達t2.png" width="554"/></li>
 <li>
-<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">建立連桿實體 (Solid)</b>：</p>
-<p data-path-to-node="5,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="5,2,1,0,0">Solid</code>。</p>
-<p data-path-to-node="5,2,1,1,0"><b data-index-in-node="0" data-path-to-node="5,2,1,1,0">定義形狀 (DEF)</b>：為這個 Solid 的 Shape 定義名稱 (如 <code data-index-in-node="37" data-path-to-node="5,2,1,1,0">LINK_SHAPE</code>)，方便後面重複使用。</p>
-<p data-path-to-node="5,2,1,2,0">外型設定：<code data-index-in-node="5" data-path-to-node="5,2,1,2,0">Box</code>，尺寸設為 X=0.02, Y=0.2 (長度), Z=0.02。</p>
-<img alt="" height="334" src="./../images/連趕1實體.jpg" width="429"/></li>
+<p data-path-to-node="9,2,0"><b data-index-in-node="0" data-path-to-node="9,2,0">建立連桿實體 (USE 技巧)</b>：</p>
+<p data-path-to-node="9,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,2,1,0,0">endPoint</code> 加入 <code data-index-in-node="14" data-path-to-node="9,2,1,0,0">Solid</code>。</p>
+<p data-path-to-node="9,2,1,1,0">在 <code data-index-in-node="2" data-path-to-node="9,2,1,1,0">children</code> -&gt; <code data-index-in-node="14" data-path-to-node="9,2,1,1,0">Shape</code> 欄位，直接選用 <b data-index-in-node="28" data-path-to-node="9,2,1,1,0"><code data-index-in-node="28" data-path-to-node="9,2,1,1,0">USE</code></b> -&gt; <code data-index-in-node="35" data-path-to-node="9,2,1,1,0">LINK_SHAPE</code>（複用左臂定義好的形狀）。</p>
+<b data-index-in-node="0" data-path-to-node="9,2,1,2,0"><img alt="" height="121" src="./../images/連趕4.png" width="554"/></b></li>
 <li>
-<p data-path-to-node="5,3,0"><b data-index-in-node="0" data-path-to-node="5,3,0">修正連桿位置 (Offset)</b>：</p>
-<p data-path-to-node="5,3,1,0,0"><b data-index-in-node="0" data-path-to-node="5,3,1,0,0">注意</b>：連桿中心點在 (0,0,0)，這樣旋轉時會像螺旋槳一樣中間旋轉。我們希望它像手臂一樣繞著端點轉。</p>
-<p data-path-to-node="5,3,1,1,0"><b data-index-in-node="0" data-path-to-node="5,3,1,1,0">修正步驟</b>：將 Solid 內部的 Shape 沿 Y 軸移動 <code data-index-in-node="31" data-path-to-node="5,3,1,1,0">0.1</code> (長度 0.2 的一半)。這樣旋轉中心 (Joint) 就會位於連桿的起始端。</p>
-<img alt="" height="358" src="./../images/修正連趕1位置.jpg" width="517"/></li>
-</ol>
-<br />第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)</div>
+<p data-path-to-node="9,2,1,1,0"></p>
+<p data-path-to-node="9,2,1,2,0"><b data-index-in-node="0" data-path-to-node="9,2,1,2,0">Pose 調整</b>：</p>
+<p data-path-to-node="9,2,1,2,1,0,0">因為結構是對稱但有角度的，這裡需要像左臂一樣，先用 <code data-index-in-node="26" data-path-to-node="9,2,1,2,1,0,0">Pose</code> 包住 Shape 或在 Solid 層級做旋轉。</p>
+<p data-path-to-node="9,2,1,2,1,1,0">影片中設定旋轉角度約為 71.86 度 (負 Z 軸方向)，並設定位移。</p>
+<p data-path-to-node="9,2,1,3,0"><b data-index-in-node="0" data-path-to-node="9,2,1,3,0">Z 軸分層 (避坑)</b>：將這個 Solid 的 Z 軸稍微抬高（例如 <code data-index-in-node="34" data-path-to-node="9,2,1,3,0">0.05</code>），使其高度與左臂錯開。</p>
+<p data-path-to-node="9,2,1,4,0"><i data-index-in-node="0" data-path-to-node="9,2,1,4,0">目的：避免左右兩臂在運動時發生「穿模」或物理碰撞干涉。</i></p>
+</li>
+<li>
+<p data-path-to-node="9,3,0"><b data-index-in-node="0" data-path-to-node="9,3,0">物理屬性</b>：</p>
+<p data-path-to-node="9,3,1,0,0">務必加入 <code data-index-in-node="5" data-path-to-node="9,3,1,0,0">boundingObject</code> (USE Shape) 和 <code data-index-in-node="34" data-path-to-node="9,3,1,0,0">physics</code> (Physics node)。</p>
+<img alt="" height="57" src="./../images/物理屬性.png" width="345"/></li>
+</ol><br />第六階段：準備工作與定義關鍵節點 (Preparation) << <a href='第六階段：準備工作與定義關鍵節點 (Preparation).html'>Previous</a> <a href='第八階段：閉合迴路 (Closing the Loop via SolidReference).html'>Next</a> >> 第八階段：閉合迴路 (Closing the Loop via SolidReference)</div>
         
     <!-- footer -->
       <div class="container">

@@ -142,31 +142,24 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)<br /><h1>第二階段：建立第一節手臂 (Link 1) 與馬達</h1>
-<ol data-path-to-node="5" start="1">
+    <div id="tipue_search_content">第八階段：閉合迴路 (Closing the Loop via SolidReference) << <a href='第八階段：閉合迴路 (Closing the Loop via SolidReference).html'>Previous</a> <a href='後半部分容易出錯指南.html'>Next</a> >> 後半部分容易出錯指南<br /><h1>第九階段：載入繪圖控制器 (Final Simulation)</h1>
+<p data-path-to-node="20">當結構完成後，載入寫好的程式碼來讓它畫圖。</p>
+<ol data-path-to-node="21" start="1">
 <li>
-<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">新增關節 (HingeJoint)</b>：</p>
-<p data-path-to-node="5,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="5,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="5,0,1,0,0">HingeJoint</code>。</p>
-<p data-path-to-node="5,0,1,1,0"><b data-index-in-node="0" data-path-to-node="5,0,1,1,0">參數設定</b>：展開 <code data-index-in-node="8" data-path-to-node="5,0,1,1,0">jointParameters</code>，確認 <code data-index-in-node="27" data-path-to-node="5,0,1,1,0">anchor</code> (錨點) 為 <code data-index-in-node="41" data-path-to-node="5,0,1,1,0">0 0 0</code>。將 <code data-index-in-node="49" data-path-to-node="5,0,1,1,0">axis</code> (旋轉軸) 改為 <code data-index-in-node="63" data-path-to-node="5,0,1,1,0">0 0 1</code> (繞 Z 軸旋轉)。</p>
-<img alt="" height="420" src="./../images/關節1.jpg" width="403"/></li>
+<p data-path-to-node="21,0,0"><b data-index-in-node="0" data-path-to-node="21,0,0">更換 Controller</b>：</p>
+<p data-path-to-node="21,0,1,0,0">將 Robot 的 <code data-index-in-node="10" data-path-to-node="21,0,1,0,0">controller</code> 改為教學提供的範例（如 <code data-index-in-node="33" data-path-to-node="21,0,1,0,0">draw_apple</code> 或 <code data-index-in-node="46" data-path-to-node="21,0,1,0,0">plotter_controller</code>）。</p>
+</li>
 <li>
-<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">加入馬達 (Motor)</b>：</p>
-<p data-path-to-node="5,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,1,1,0,0">device</code> 欄位新增 <code data-index-in-node="14" data-path-to-node="5,1,1,0,0">RotationalMotor</code>。</p>
-<p data-path-to-node="5,1,1,1,0"><b data-index-in-node="0" data-path-to-node="5,1,1,1,0">重要</b>：將馬達 <code data-index-in-node="7" data-path-to-node="5,1,1,1,0">name</code> 命名為 <code data-index-in-node="16" data-path-to-node="5,1,1,1,0">"T1"</code> (程式碼控制時會用到)。</p>
-<img alt="" height="79" src="./../images/馬達T1.jpg" width="328"/></li>
+<p data-path-to-node="21,1,0"><b data-index-in-node="0" data-path-to-node="21,1,0">開啟 Supervisor 模式</b>：</p>
+<p data-path-to-node="21,1,1,0,0">將 Robot 的 <code data-index-in-node="10" data-path-to-node="21,1,1,0,0">supervisor</code> 欄位設為 <code data-index-in-node="26" data-path-to-node="21,1,1,0,0">TRUE</code>。</p>
+<p data-path-to-node="21,1,1,1,0"><i data-index-in-node="0" data-path-to-node="21,1,1,1,0">原因：繪圖程式通常使用 Supervisor API 來在 3D 場景的地板上繪製紅色軌跡線（Display 節點或直接畫線），這需要最高權限。</i></p>
+</li>
 <li>
-<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">建立連桿實體 (Solid)</b>：</p>
-<p data-path-to-node="5,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="5,2,1,0,0">Solid</code>。</p>
-<p data-path-to-node="5,2,1,1,0"><b data-index-in-node="0" data-path-to-node="5,2,1,1,0">定義形狀 (DEF)</b>：為這個 Solid 的 Shape 定義名稱 (如 <code data-index-in-node="37" data-path-to-node="5,2,1,1,0">LINK_SHAPE</code>)，方便後面重複使用。</p>
-<p data-path-to-node="5,2,1,2,0">外型設定：<code data-index-in-node="5" data-path-to-node="5,2,1,2,0">Box</code>，尺寸設為 X=0.02, Y=0.2 (長度), Z=0.02。</p>
-<img alt="" height="334" src="./../images/連趕1實體.jpg" width="429"/></li>
-<li>
-<p data-path-to-node="5,3,0"><b data-index-in-node="0" data-path-to-node="5,3,0">修正連桿位置 (Offset)</b>：</p>
-<p data-path-to-node="5,3,1,0,0"><b data-index-in-node="0" data-path-to-node="5,3,1,0,0">注意</b>：連桿中心點在 (0,0,0)，這樣旋轉時會像螺旋槳一樣中間旋轉。我們希望它像手臂一樣繞著端點轉。</p>
-<p data-path-to-node="5,3,1,1,0"><b data-index-in-node="0" data-path-to-node="5,3,1,1,0">修正步驟</b>：將 Solid 內部的 Shape 沿 Y 軸移動 <code data-index-in-node="31" data-path-to-node="5,3,1,1,0">0.1</code> (長度 0.2 的一半)。這樣旋轉中心 (Joint) 就會位於連桿的起始端。</p>
-<img alt="" height="358" src="./../images/修正連趕1位置.jpg" width="517"/></li>
+<p data-path-to-node="21,2,0"><b data-index-in-node="0" data-path-to-node="21,2,0">執行模擬</b>：</p>
+<p data-path-to-node="21,2,1,0,0">若一切設置正確（Anchor 正確、Physics 有開、SolidReference 名稱對應），機器人將會由 T1 和 T2 馬達協同驅動，在地面畫出蘋果或貓的輪廓。</p>
+</li>
 </ol>
-<br />第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)</div>
+<br />第八階段：閉合迴路 (Closing the Loop via SolidReference) << <a href='第八階段：閉合迴路 (Closing the Loop via SolidReference).html'>Previous</a> <a href='後半部分容易出錯指南.html'>Next</a> >> 後半部分容易出錯指南</div>
         
     <!-- footer -->
       <div class="container">

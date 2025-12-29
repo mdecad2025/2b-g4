@@ -142,31 +142,34 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)<br /><h1>第二階段：建立第一節手臂 (Link 1) 與馬達</h1>
-<ol data-path-to-node="5" start="1">
+    <div id="tipue_search_content">第五階段：建立第三節手臂 (Link 3) 與重複使用 << <a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>Previous</a> <a href='第六階段：準備工作與定義關鍵節點 (Preparation).html'>Next</a> >> 第六階段：準備工作與定義關鍵節點 (Preparation)<br /><h1>前半部分容易出錯指南</h1>
+<p></p>
+<ul>
 <li>
-<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">新增關節 (HingeJoint)</b>：</p>
-<p data-path-to-node="5,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="5,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="5,0,1,0,0">HingeJoint</code>。</p>
-<p data-path-to-node="5,0,1,1,0"><b data-index-in-node="0" data-path-to-node="5,0,1,1,0">參數設定</b>：展開 <code data-index-in-node="8" data-path-to-node="5,0,1,1,0">jointParameters</code>，確認 <code data-index-in-node="27" data-path-to-node="5,0,1,1,0">anchor</code> (錨點) 為 <code data-index-in-node="41" data-path-to-node="5,0,1,1,0">0 0 0</code>。將 <code data-index-in-node="49" data-path-to-node="5,0,1,1,0">axis</code> (旋轉軸) 改為 <code data-index-in-node="63" data-path-to-node="5,0,1,1,0">0 0 1</code> (繞 Z 軸旋轉)。</p>
-<img alt="" height="420" src="./../images/關節1.jpg" width="403"/></li>
+<p data-path-to-node="18,0,0"><b data-index-in-node="0" data-path-to-node="18,0,0">幾何中心 vs. 旋轉中心</b>：</p>
+<p data-path-to-node="18,0,1,0,0">這是新手最常錯的地方。Webots 的 <code data-index-in-node="20" data-path-to-node="18,0,1,0,0">Box</code> 或 <code data-index-in-node="26" data-path-to-node="18,0,1,0,0">Cylinder</code> 幾何中心預設在正中間。</p>
+<p data-path-to-node="18,0,1,1,0"><b data-index-in-node="0" data-path-to-node="18,0,1,1,0">解決法</b>：要在 <code data-index-in-node="7" data-path-to-node="18,0,1,1,0">Solid</code> 下層的 <code data-index-in-node="17" data-path-to-node="18,0,1,1,0">Shape</code> -&gt; <code data-index-in-node="26" data-path-to-node="18,0,1,1,0">transform</code> (或 translation) 做偏移。<b data-index-in-node="56" data-path-to-node="18,0,1,1,0">千萬不要移上面的 Joint 或 Solid 本身</b>，否則旋轉軸心會跑掉。</p>
+<p data-path-to-node="18,0,1,2,0"><b data-index-in-node="0" data-path-to-node="18,0,1,2,0">口訣</b>：Joint 永遠在 (0,0,0)，是 Shape 自己移出去讓 Joint 在邊緣。</p>
+</li>
 <li>
-<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">加入馬達 (Motor)</b>：</p>
-<p data-path-to-node="5,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,1,1,0,0">device</code> 欄位新增 <code data-index-in-node="14" data-path-to-node="5,1,1,0,0">RotationalMotor</code>。</p>
-<p data-path-to-node="5,1,1,1,0"><b data-index-in-node="0" data-path-to-node="5,1,1,1,0">重要</b>：將馬達 <code data-index-in-node="7" data-path-to-node="5,1,1,1,0">name</code> 命名為 <code data-index-in-node="16" data-path-to-node="5,1,1,1,0">"T1"</code> (程式碼控制時會用到)。</p>
-<img alt="" height="79" src="./../images/馬達T1.jpg" width="328"/></li>
+<p data-path-to-node="18,1,0"><b data-index-in-node="0" data-path-to-node="18,1,0">Pose 節點的重要性</b>：</p>
+<p data-path-to-node="18,1,1,0,0">當手臂不是「直直的」連接（有轉折角度）時，必須用 <code data-index-in-node="25" data-path-to-node="18,1,1,0,0">Pose</code> 包住下一層的 Joint。</p>
+<p data-path-to-node="18,1,1,1,0">如果不加 Pose 直接旋轉 Joint 的軸，會導致馬達的 <code data-index-in-node="31" data-path-to-node="18,1,1,1,0">0</code> 度位置錯誤，後續寫程式控制逆運動學 (Inverse Kinematics) 會非常痛苦。</p>
+</li>
 <li>
-<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">建立連桿實體 (Solid)</b>：</p>
-<p data-path-to-node="5,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="5,2,1,0,0">Solid</code>。</p>
-<p data-path-to-node="5,2,1,1,0"><b data-index-in-node="0" data-path-to-node="5,2,1,1,0">定義形狀 (DEF)</b>：為這個 Solid 的 Shape 定義名稱 (如 <code data-index-in-node="37" data-path-to-node="5,2,1,1,0">LINK_SHAPE</code>)，方便後面重複使用。</p>
-<p data-path-to-node="5,2,1,2,0">外型設定：<code data-index-in-node="5" data-path-to-node="5,2,1,2,0">Box</code>，尺寸設為 X=0.02, Y=0.2 (長度), Z=0.02。</p>
-<img alt="" height="334" src="./../images/連趕1實體.jpg" width="429"/></li>
+<p data-path-to-node="18,2,0"><b data-index-in-node="0" data-path-to-node="18,2,0">物理屬性 (Physics &amp; BoundingObject)</b>：</p>
+<p data-path-to-node="18,2,1,0,0">雖然教學前半段只畫形狀，但若要讓手臂真的「動」起來且有碰撞效果，每一個 <code data-index-in-node="36" data-path-to-node="18,2,1,0,0">Solid</code> 都必須設定：</p>
+<p data-path-to-node="18,2,1,0,1,0,0"><code data-index-in-node="0" data-path-to-node="18,2,1,0,1,0,0">boundingObject</code>：通常直接引用 (<code data-index-in-node="23" data-path-to-node="18,2,1,0,1,0,0">USE</code>) 該 Solid 的 Shape。</p>
+<p data-path-to-node="18,2,1,0,1,1,0"><code data-index-in-node="0" data-path-to-node="18,2,1,0,1,1,0">physics</code>：設為 <code data-index-in-node="11" data-path-to-node="18,2,1,0,1,1,0">Physics</code> 節點（使用預設值即可），否則它會變成靜態物體，浮在空中無法受力轉動。</p>
+</li>
 <li>
-<p data-path-to-node="5,3,0"><b data-index-in-node="0" data-path-to-node="5,3,0">修正連桿位置 (Offset)</b>：</p>
-<p data-path-to-node="5,3,1,0,0"><b data-index-in-node="0" data-path-to-node="5,3,1,0,0">注意</b>：連桿中心點在 (0,0,0)，這樣旋轉時會像螺旋槳一樣中間旋轉。我們希望它像手臂一樣繞著端點轉。</p>
-<p data-path-to-node="5,3,1,1,0"><b data-index-in-node="0" data-path-to-node="5,3,1,1,0">修正步驟</b>：將 Solid 內部的 Shape 沿 Y 軸移動 <code data-index-in-node="31" data-path-to-node="5,3,1,1,0">0.1</code> (長度 0.2 的一半)。這樣旋轉中心 (Joint) 就會位於連桿的起始端。</p>
-<img alt="" height="358" src="./../images/修正連趕1位置.jpg" width="517"/></li>
-</ol>
-<br />第一階段：建立基礎機器人與底座 (Base Setup) << <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Previous</a> <a href='第三階段：撰寫控制器並測試 (Controller).html'>Next</a> >> 第三階段：撰寫控制器並測試 (Controller)</div>
+<p data-path-to-node="18,3,0"><b data-index-in-node="0" data-path-to-node="18,3,0">DEF / USE 的命名習慣</b>：</p>
+<p data-path-to-node="18,3,1,0,0">養成好習慣，第一次建立某個零件（如螺絲、連桿）時用 <code data-index-in-node="26" data-path-to-node="18,3,1,0,0">DEF</code> 命名。</p>
+<p data-path-to-node="18,3,1,1,0">後面要用到一模一樣的零件時用 <code data-index-in-node="15" data-path-to-node="18,3,1,1,0">USE</code>，這樣改一個參數全部都會跟著改，且模擬效能較好。</p>
+</li>
+</ul>
+<p></p>
+<br />第五階段：建立第三節手臂 (Link 3) 與重複使用 << <a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>Previous</a> <a href='第六階段：準備工作與定義關鍵節點 (Preparation).html'>Next</a> >> 第六階段：準備工作與定義關鍵節點 (Preparation)</div>
         
     <!-- footer -->
       <div class="container">
