@@ -201,23 +201,22 @@
 <p data-path-to-node="9,3,0"><b data-index-in-node="0" data-path-to-node="9,3,0">物理屬性</b>：</p>
 <p data-path-to-node="9,3,1,0,0">務必加入 <code data-index-in-node="5" data-path-to-node="9,3,1,0,0">boundingObject</code> (USE Shape) 和 <code data-index-in-node="34" data-path-to-node="9,3,1,0,0">physics</code> (Physics node)。</p>
 <img alt="" height="57" src="/images/物理屬性.png" width="345"/></li>
-</ol><h3 data-path-to-node="11"><b data-index-in-node="0" data-path-to-node="11">第八階段：閉合迴路 (Closing the Loop via SolidReference)</b></h3>
+</ol><h3>第八階段：閉合迴路 (Closing the Loop via SolidReference)</h3>
 <p data-path-to-node="12">這是整部教學最核心、也最容易失敗的步驟。我們要建立 Link 5，並讓它的末端「扣」回 Link 3。</p>
 <ol data-path-to-node="13" start="1">
 <li>
 <p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">建立末端關節 (Joint 5)</b>：</p>
 <p data-path-to-node="13,0,1,0,0">在 Link 4 (右臂第一節) 的末端，新增一個 <code data-index-in-node="26" data-path-to-node="13,0,1,0,0">HingeJoint</code>。</p>
 <p data-path-to-node="13,0,1,1,0">同樣需要精確計算 <code data-index-in-node="9" data-path-to-node="13,0,1,1,0">anchor</code> 位置（或者透過上一層的 Pose 讓相對位置正確）。</p>
-</li>
+<img alt="" height="47" src="/images/關節5.png" width="350"/></li>
 <li>
 <p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">使用 SolidReference (關鍵)</b>：</p>
 <p data-path-to-node="13,1,1,0,0">在這個 Joint 的 <code data-index-in-node="12" data-path-to-node="13,1,1,0,0">endPoint</code> 欄位，<b data-index-in-node="24" data-path-to-node="13,1,1,0,0">不要</b>新增 <code data-index-in-node="29" data-path-to-node="13,1,1,0,0">Solid</code>。</p>
 <p data-path-to-node="13,1,1,1,0"><b data-index-in-node="0" data-path-to-node="13,1,1,1,0">請新增 <code data-index-in-node="4" data-path-to-node="13,1,1,1,0">SolidReference</code> 節點</b>。</p>
 <p data-path-to-node="13,1,1,2,0">在 <code data-index-in-node="2" data-path-to-node="13,1,1,2,0">solidName</code> 欄位中，輸入 <b data-index-in-node="19" data-path-to-node="13,1,1,2,0"><code data-index-in-node="19" data-path-to-node="13,1,1,2,0">LINK3</code></b>（即第六階段定義的名稱）。</p>
 <p data-path-to-node="13,1,1,3,0"><i data-index-in-node="0" data-path-to-node="13,1,1,3,0">原理：這告訴物理引擎：「這個關節的另一端，請物理性地連接到已經存在的 Link 3 上」。這就在邏輯樹狀結構之外，建立了一條物理連結線。</i></p>
-</li>
-</ol>
-<h1>模型</h1>
+<i data-index-in-node="0" data-path-to-node="13,1,1,3,0"></i></li>
+</ol><h1>模型</h1>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>
