@@ -125,6 +125,33 @@
 </ul>
 </li>
 </ol>
+<h3>前半部分容易出錯指南</h3>
+<p></p>
+<ul>
+<li>
+<p data-path-to-node="18,0,0"><b data-index-in-node="0" data-path-to-node="18,0,0">幾何中心 vs. 旋轉中心</b>：</p>
+<p data-path-to-node="18,0,1,0,0">這是新手最常錯的地方。Webots 的 <code data-index-in-node="20" data-path-to-node="18,0,1,0,0">Box</code> 或 <code data-index-in-node="26" data-path-to-node="18,0,1,0,0">Cylinder</code> 幾何中心預設在正中間。</p>
+<p data-path-to-node="18,0,1,1,0"><b data-index-in-node="0" data-path-to-node="18,0,1,1,0">解決法</b>：要在 <code data-index-in-node="7" data-path-to-node="18,0,1,1,0">Solid</code> 下層的 <code data-index-in-node="17" data-path-to-node="18,0,1,1,0">Shape</code> -&gt; <code data-index-in-node="26" data-path-to-node="18,0,1,1,0">transform</code> (或 translation) 做偏移。<b data-index-in-node="56" data-path-to-node="18,0,1,1,0">千萬不要移上面的 Joint 或 Solid 本身</b>，否則旋轉軸心會跑掉。</p>
+<p data-path-to-node="18,0,1,2,0"><b data-index-in-node="0" data-path-to-node="18,0,1,2,0">口訣</b>：Joint 永遠在 (0,0,0)，是 Shape 自己移出去讓 Joint 在邊緣。</p>
+</li>
+<li>
+<p data-path-to-node="18,1,0"><b data-index-in-node="0" data-path-to-node="18,1,0">Pose 節點的重要性</b>：</p>
+<p data-path-to-node="18,1,1,0,0">當手臂不是「直直的」連接（有轉折角度）時，必須用 <code data-index-in-node="25" data-path-to-node="18,1,1,0,0">Pose</code> 包住下一層的 Joint。</p>
+<p data-path-to-node="18,1,1,1,0">如果不加 Pose 直接旋轉 Joint 的軸，會導致馬達的 <code data-index-in-node="31" data-path-to-node="18,1,1,1,0">0</code> 度位置錯誤，後續寫程式控制逆運動學 (Inverse Kinematics) 會非常痛苦。</p>
+</li>
+<li>
+<p data-path-to-node="18,2,0"><b data-index-in-node="0" data-path-to-node="18,2,0">物理屬性 (Physics &amp; BoundingObject)</b>：</p>
+<p data-path-to-node="18,2,1,0,0">雖然教學前半段只畫形狀，但若要讓手臂真的「動」起來且有碰撞效果，每一個 <code data-index-in-node="36" data-path-to-node="18,2,1,0,0">Solid</code> 都必須設定：</p>
+<p data-path-to-node="18,2,1,0,1,0,0"><code data-index-in-node="0" data-path-to-node="18,2,1,0,1,0,0">boundingObject</code>：通常直接引用 (<code data-index-in-node="23" data-path-to-node="18,2,1,0,1,0,0">USE</code>) 該 Solid 的 Shape。</p>
+<p data-path-to-node="18,2,1,0,1,1,0"><code data-index-in-node="0" data-path-to-node="18,2,1,0,1,1,0">physics</code>：設為 <code data-index-in-node="11" data-path-to-node="18,2,1,0,1,1,0">Physics</code> 節點（使用預設值即可），否則它會變成靜態物體，浮在空中無法受力轉動。</p>
+</li>
+<li>
+<p data-path-to-node="18,3,0"><b data-index-in-node="0" data-path-to-node="18,3,0">DEF / USE 的命名習慣</b>：</p>
+<p data-path-to-node="18,3,1,0,0">養成好習慣，第一次建立某個零件（如螺絲、連桿）時用 <code data-index-in-node="26" data-path-to-node="18,3,1,0,0">DEF</code> 命名。</p>
+<p data-path-to-node="18,3,1,1,0">後面要用到一模一樣的零件時用 <code data-index-in-node="15" data-path-to-node="18,3,1,1,0">USE</code>，這樣改一個參數全部都會跟著改，且模擬效能較好。</p>
+</li>
+</ul>
+<p></p>
 <h2>模型</h2>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
