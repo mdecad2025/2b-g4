@@ -216,7 +216,24 @@
 <p data-path-to-node="13,1,1,2,0">在 <code data-index-in-node="2" data-path-to-node="13,1,1,2,0">solidName</code> 欄位中，輸入 <b data-index-in-node="19" data-path-to-node="13,1,1,2,0"><code data-index-in-node="19" data-path-to-node="13,1,1,2,0">LINK3</code></b>（即第六階段定義的名稱）。</p>
 <p data-path-to-node="13,1,1,3,0"><i data-index-in-node="0" data-path-to-node="13,1,1,3,0">原理：這告訴物理引擎：「這個關節的另一端，請物理性地連接到已經存在的 Link 3 上」。這就在邏輯樹狀結構之外，建立了一條物理連結線。</i></p>
 <i data-index-in-node="0" data-path-to-node="13,1,1,3,0"></i></li>
-</ol><h1>模型</h1>
+</ol><h3 data-path-to-node="19"><b data-index-in-node="0" data-path-to-node="19">第九階段：載入繪圖控制器 (Final Simulation)</b></h3>
+<p data-path-to-node="20">當結構完成後，載入寫好的程式碼來讓它畫圖。</p>
+<ol data-path-to-node="21" start="1">
+<li>
+<p data-path-to-node="21,0,0"><b data-index-in-node="0" data-path-to-node="21,0,0">更換 Controller</b>：</p>
+<p data-path-to-node="21,0,1,0,0">將 Robot 的 <code data-index-in-node="10" data-path-to-node="21,0,1,0,0">controller</code> 改為教學提供的範例（如 <code data-index-in-node="33" data-path-to-node="21,0,1,0,0">draw_apple</code> 或 <code data-index-in-node="46" data-path-to-node="21,0,1,0,0">plotter_controller</code>）。</p>
+</li>
+<li>
+<p data-path-to-node="21,1,0"><b data-index-in-node="0" data-path-to-node="21,1,0">開啟 Supervisor 模式</b>：</p>
+<p data-path-to-node="21,1,1,0,0">將 Robot 的 <code data-index-in-node="10" data-path-to-node="21,1,1,0,0">supervisor</code> 欄位設為 <code data-index-in-node="26" data-path-to-node="21,1,1,0,0">TRUE</code>。</p>
+<p data-path-to-node="21,1,1,1,0"><i data-index-in-node="0" data-path-to-node="21,1,1,1,0">原因：繪圖程式通常使用 Supervisor API 來在 3D 場景的地板上繪製紅色軌跡線（Display 節點或直接畫線），這需要最高權限。</i></p>
+</li>
+<li>
+<p data-path-to-node="21,2,0"><b data-index-in-node="0" data-path-to-node="21,2,0">執行模擬</b>：</p>
+<p data-path-to-node="21,2,1,0,0">若一切設置正確（Anchor 正確、Physics 有開、SolidReference 名稱對應），機器人將會由 T1 和 T2 馬達協同驅動，在地面畫出蘋果或貓的輪廓。</p>
+</li>
+</ol>
+<h1>模型</h1>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>
