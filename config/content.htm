@@ -171,7 +171,7 @@
 <p data-path-to-node="5,2,1,1,0">將新底座沿 X 軸移動 <code data-index-in-node="12" data-path-to-node="5,2,1,1,0">0.2</code> 公尺（設定 <code data-index-in-node="22" data-path-to-node="5,2,1,1,0">translation</code> x: 0.2）。</p>
 <p data-path-to-node="5,2,1,2,0">為了視覺區分，可以修改 <code data-index-in-node="12" data-path-to-node="5,2,1,2,0">Appearance</code> 的顏色（例如改為藍色）。</p>
 <img alt="" height="288" src="/images/右側馬達.png" width="554"/></li>
-</ol><h3 data-path-to-node="7"><b data-index-in-node="0" data-path-to-node="7">第七階段：建立右側第一節手臂 (Link 4)</b></h3>
+</ol><h3>第七階段：建立右側第一節手臂 (Link 4)</h3>
 <p data-path-to-node="8">這一步與左臂相似，但要注意坐標系的變換。</p>
 <ol data-path-to-node="9" start="1">
 <li>
@@ -179,15 +179,18 @@
 <p data-path-to-node="9,0,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,0,1,0,0">Robot</code> 的 <code data-index-in-node="10" data-path-to-node="9,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="9,0,1,0,0">HingeJoint</code>。</p>
 <p data-path-to-node="9,0,1,1,0"><b data-index-in-node="0" data-path-to-node="9,0,1,1,0">關鍵設定 - Anchor (錨點)</b>：將 <code data-index-in-node="21" data-path-to-node="9,0,1,1,0">jointParameters</code> -&gt; <code data-index-in-node="40" data-path-to-node="9,0,1,1,0">anchor</code> 設為 <code data-index-in-node="50" data-path-to-node="9,0,1,1,0">0.2 0 0</code>。</p>
 <p data-path-to-node="9,0,1,2,0"><i data-index-in-node="0" data-path-to-node="9,0,1,2,0">注意：因為右臂的旋轉中心在右邊底座，若不設此值，它會繞著世界原點 (0,0,0) 旋轉，導致結構解體。</i></p>
-</li>
+<i data-index-in-node="0" data-path-to-node="9,0,1,2,0"></i><i data-index-in-node="0" data-path-to-node="9,0,1,2,0"><img alt="" height="98" src="/images/關節4.png" width="524"/></i></li>
 <li>
 <p data-path-to-node="9,1,0"><b data-index-in-node="0" data-path-to-node="9,1,0">設置馬達 (T2)</b>：</p>
 <p data-path-to-node="9,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,1,1,0,0">device</code> 欄位加入 <code data-index-in-node="14" data-path-to-node="9,1,1,0,0">RotationalMotor</code>，命名為 <code data-index-in-node="34" data-path-to-node="9,1,1,0,0">T2</code>。</p>
-</li>
+<img alt="" height="177" src="/images/馬達t2.png" width="554"/></li>
 <li>
 <p data-path-to-node="9,2,0"><b data-index-in-node="0" data-path-to-node="9,2,0">建立連桿實體 (USE 技巧)</b>：</p>
 <p data-path-to-node="9,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="9,2,1,0,0">endPoint</code> 加入 <code data-index-in-node="14" data-path-to-node="9,2,1,0,0">Solid</code>。</p>
 <p data-path-to-node="9,2,1,1,0">在 <code data-index-in-node="2" data-path-to-node="9,2,1,1,0">children</code> -&gt; <code data-index-in-node="14" data-path-to-node="9,2,1,1,0">Shape</code> 欄位，直接選用 <b data-index-in-node="28" data-path-to-node="9,2,1,1,0"><code data-index-in-node="28" data-path-to-node="9,2,1,1,0">USE</code></b> -&gt; <code data-index-in-node="35" data-path-to-node="9,2,1,1,0">LINK_SHAPE</code>（複用左臂定義好的形狀）。</p>
+<b data-index-in-node="0" data-path-to-node="9,2,1,2,0"><img alt="" height="121" src="/images/連趕4.png" width="554"/></b></li>
+<li>
+<p data-path-to-node="9,2,1,1,0"></p>
 <p data-path-to-node="9,2,1,2,0"><b data-index-in-node="0" data-path-to-node="9,2,1,2,0">Pose 調整</b>：</p>
 <p data-path-to-node="9,2,1,2,1,0,0">因為結構是對稱但有角度的，這裡需要像左臂一樣，先用 <code data-index-in-node="26" data-path-to-node="9,2,1,2,1,0,0">Pose</code> 包住 Shape 或在 Solid 層級做旋轉。</p>
 <p data-path-to-node="9,2,1,2,1,1,0">影片中設定旋轉角度約為 71.86 度 (負 Z 軸方向)，並設定位移。</p>
@@ -197,9 +200,8 @@
 <li>
 <p data-path-to-node="9,3,0"><b data-index-in-node="0" data-path-to-node="9,3,0">物理屬性</b>：</p>
 <p data-path-to-node="9,3,1,0,0">務必加入 <code data-index-in-node="5" data-path-to-node="9,3,1,0,0">boundingObject</code> (USE Shape) 和 <code data-index-in-node="34" data-path-to-node="9,3,1,0,0">physics</code> (Physics node)。</p>
-</li>
-</ol>
-<h1>模型</h1>
+<img alt="" height="57" src="/images/物理屬性.png" width="345"/></li>
+</ol><h1>模型</h1>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>
