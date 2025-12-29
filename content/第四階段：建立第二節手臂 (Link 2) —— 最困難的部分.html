@@ -2,6 +2,7 @@
         <head>
         <title>cad2025_hw</title>
         <meta charset="utf-8">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -95,6 +96,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -140,4 +142,77 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><li><a href='plotter.html'>plotter</a><ul><li><a href='製作過程簡述.html'>製作過程簡述</a><ul><li><a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>第一階段：建立基礎機器人與底座 (Base Setup)</a><li><a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>第二階段：建立第一節手臂 (Link 1) 與馬達</a><li><a href='第三階段：撰寫控制器並測試 (Controller).html'>第三階段：撰寫控制器並測試 (Controller)</a><li><a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</a><li><a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>第五階段：建立第三節手臂 (Link 3) 與重複使用</a></li></ul><li><a href='模型.html'>模型</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">第三階段：撰寫控制器並測試 (Controller) << <a href='第三階段：撰寫控制器並測試 (Controller).html'>Previous</a> <a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>Next</a> >> 第五階段：建立第三節手臂 (Link 3) 與重複使用<br /><h1>第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</h1>
+<p data-path-to-node="11">這裡不能直接加 Joint，因為 Link 2 與 Link 1 之間有特定的設計角度 (69.62度)，且位置在 Link 1 的末端。</p>
+<ol data-path-to-node="12" start="1">
+<li>
+<p data-path-to-node="12,0,0"><b data-index-in-node="0" data-path-to-node="12,0,0">使用 Pose 節點進行坐標轉換</b>：</p>
+<p data-path-to-node="12,0,1,0,0">在 Link 1 的 <code data-index-in-node="11" data-path-to-node="12,0,1,0,0">children</code> 下，<b data-index-in-node="22" data-path-to-node="12,0,1,0,0">不要直接加 HingeJoint</b>，而是先加一個 <code data-index-in-node="46" data-path-to-node="12,0,1,0,0">Pose</code> 節點。</p>
+<p data-path-to-node="12,0,1,1,0"><b data-index-in-node="0" data-path-to-node="12,0,1,1,0">位移 (Translation)</b>：將 Pose 移動到 Link 1 的末端 (Y=0.2)。</p>
+<p data-path-to-node="12,0,1,2,0"><b data-index-in-node="0" data-path-to-node="12,0,1,2,0">旋轉 (Rotation)</b>：設定 Pose 的 <code data-index-in-node="24" data-path-to-node="12,0,1,2,0">rotation</code> 為 <code data-index-in-node="35" data-path-to-node="12,0,1,2,0">0 0 1</code> (Z軸)，角度設為 <code data-index-in-node="51" data-path-to-node="12,0,1,2,0">-1.215</code> (即 -69.62 度轉為弧度)。</p>
+<p data-path-to-node="12,0,1,3,0"><i data-index-in-node="0" data-path-to-node="12,0,1,3,0">這一步是為了建立一個新的「局部坐標系」，讓接下來的關節長在這個歪斜的方向上。</i></p>
+<i data-index-in-node="0" data-path-to-node="12,0,1,3,0"></i><i data-index-in-node="0" data-path-to-node="12,0,1,3,0"><img alt="" height="567" src="./../images/座標轉換.png" width="554"/></i></li>
+<li>
+<p data-path-to-node="12,1,0"><b data-index-in-node="0" data-path-to-node="12,1,0">新增第二個關節</b>：</p>
+<p data-path-to-node="12,1,1,0,0">在這個 <code data-index-in-node="4" data-path-to-node="12,1,1,0,0">Pose</code> 的 <code data-index-in-node="11" data-path-to-node="12,1,1,0,0">children</code> 下，才新增 <code data-index-in-node="26" data-path-to-node="12,1,1,0,0">HingeJoint</code> (J2)。</p>
+<p data-path-to-node="12,1,1,1,0">設定馬達 <code data-index-in-node="5" data-path-to-node="12,1,1,1,0">name</code> 為 <code data-index-in-node="12" data-path-to-node="12,1,1,1,0">"T2"</code>。</p>
+<img alt="" height="380" src="./../images/關節2.png" width="554"/></li>
+<li>
+<p data-path-to-node="12,2,0"><b data-index-in-node="0" data-path-to-node="12,2,0">建立 Link 2 實體</b>：</p>
+<p data-path-to-node="12,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="12,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="12,2,1,0,0">Solid</code>。</p>
+<p data-path-to-node="12,2,1,1,0">外型：長度為 <code data-index-in-node="7" data-path-to-node="12,2,1,1,0">0.27</code>。</p>
+<p data-path-to-node="12,2,1,1,0"></p>
+<p data-path-to-node="12,2,1,2,0"><b data-index-in-node="0" data-path-to-node="12,2,1,2,0">修正位置</b>：將 Shape 沿 Y 軸移動 <code data-index-in-node="21" data-path-to-node="12,2,1,2,0">0.135</code> (0.27 的一半)，確保旋轉點在端點。</p>
+<img alt="" height="82" src="./../images/link2.png" width="545"/></li>
+</ol>
+<br />第三階段：撰寫控制器並測試 (Controller) << <a href='第三階段：撰寫控制器並測試 (Controller).html'>Previous</a> <a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>Next</a> >> 第五階段：建立第三節手臂 (Link 3) 與重複使用</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        

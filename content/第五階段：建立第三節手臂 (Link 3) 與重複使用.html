@@ -2,6 +2,7 @@
         <head>
         <title>cad2025_hw</title>
         <meta charset="utf-8">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -95,6 +96,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -140,4 +142,82 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><li><a href='plotter.html'>plotter</a><ul><li><a href='製作過程簡述.html'>製作過程簡述</a><ul><li><a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>第一階段：建立基礎機器人與底座 (Base Setup)</a><li><a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>第二階段：建立第一節手臂 (Link 1) 與馬達</a><li><a href='第三階段：撰寫控制器並測試 (Controller).html'>第三階段：撰寫控制器並測試 (Controller)</a><li><a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</a><li><a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>第五階段：建立第三節手臂 (Link 3) 與重複使用</a></li></ul><li><a href='模型.html'>模型</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">第四階段：建立第二節手臂 (Link 2) —— 最困難的部分 << <a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>Previous</a> <a href='模型.html'>Next</a> >> 模型<br /><h1>第五階段：建立第三節手臂 (Link 3) 與重複使用</h1>
+<ol data-path-to-node="15" start="1">
+<li>
+<p data-path-to-node="15,0,0"><b data-index-in-node="0" data-path-to-node="15,0,0">重複 Pose 轉換技巧</b>：</p>
+<ul data-path-to-node="15,0,1">
+<li>
+<p data-path-to-node="15,0,1,0,0">在 Link 2 的 <code data-index-in-node="11" data-path-to-node="15,0,1,0,0">children</code> 下，新增 <code data-index-in-node="25" data-path-to-node="15,0,1,0,0">Pose</code>。</p>
+</li>
+<li>
+<p data-path-to-node="15,0,1,1,0">位移至 Link 2 末端 (Y=0.27)，旋轉角度設為 -79.51 度 (需換算弧度)。</p>
+</li>
+</ul>
+</li>
+<li>
+<p data-path-to-node="15,1,0"><b data-index-in-node="0" data-path-to-node="15,1,0">重複使用形狀 (USE)</b>：</p>
+<ul data-path-to-node="15,1,1">
+<li>
+<p data-path-to-node="15,1,1,0,0">新增 <code data-index-in-node="3" data-path-to-node="15,1,1,0,0">HingeJoint</code> (J3) 與 <code data-index-in-node="21" data-path-to-node="15,1,1,0,0">Solid</code>。</p>
+</li>
+<li>
+<p data-path-to-node="15,1,1,1,0">在 Shape 欄位，不需要重新設定 Box 尺寸。直接使用 <b data-index-in-node="31" data-path-to-node="15,1,1,1,0"><code data-index-in-node="31" data-path-to-node="15,1,1,1,0">USE</code></b> 功能，選擇之前定義好的 <code data-index-in-node="47" data-path-to-node="15,1,1,1,0">LINK_SHAPE</code> (如果尺寸相同) 或者 Link 2 的形狀定義。</p>
+</li>
+<li>
+<p data-path-to-node="15,1,1,2,0"><i data-index-in-node="0" data-path-to-node="15,1,1,2,0">影片中 Link 3 長度與 Link 2 相同 (0.27)，所以可以直接 USE Link 2 的定義，省去設定時間。</i></p>
+</li>
+</ul>
+</li>
+</ol>
+<br />第四階段：建立第二節手臂 (Link 2) —— 最困難的部分 << <a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>Previous</a> <a href='模型.html'>Next</a> >> 模型</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        

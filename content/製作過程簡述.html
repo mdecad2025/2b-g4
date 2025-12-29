@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='plotter.html'>plotter</a><ul class='dropdown'><li><a href='製作過程簡述.html'>製作過程簡述</a><li><a href='模型.html'>模型</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='plotter.html'>plotter</a><ul class='dropdown'><li class='has-children'><a href='製作過程簡述.html'>製作過程簡述</a><ul class='dropdown'><li><a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>第一階段：建立基礎機器人與底座 (Base Setup)</a><li><a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>第二階段：建立第一節手臂 (Link 1) 與馬達</a><li><a href='第三階段：撰寫控制器並測試 (Controller).html'>第三階段：撰寫控制器並測試 (Controller)</a><li><a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</a><li><a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>第五階段：建立第三節手臂 (Link 3) 與重複使用</a></li></ul><li><a href='模型.html'>模型</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,51 +142,8 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">plotter << <a href='plotter.html'>Previous</a> <a href='模型.html'>Next</a> >> 模型<br /><h1>製作過程簡述</h1>
-<p><b data-index-in-node="0" data-path-to-node="1">第一階段：建立基礎機器人與底座 (Base Setup)</b></p>
-<ol data-path-to-node="2" start="1">
-<li>
-<p data-path-to-node="2,0,0"><b data-index-in-node="0" data-path-to-node="2,0,0">建立 Robot 節點</b>：</p>
-<p data-path-to-node="2,0,1,0,0">新增一個 <code data-index-in-node="5" data-path-to-node="2,0,1,0,0">Robot</code> 節點。</p>
-<p data-path-to-node="2,0,1,1,0"><b data-index-in-node="0" data-path-to-node="2,0,1,1,0">注意</b>：務必確認 Robot 的 <code data-index-in-node="16" data-path-to-node="2,0,1,1,0">translation</code> 是 <code data-index-in-node="30" data-path-to-node="2,0,1,1,0">0 0 0</code>，這是整個模型的絕對原點。</p>
-<img alt="" height="121" src="./../images/原點.jpg" width="280"/></li>
-<li>
-<p data-path-to-node="2,1,0"><b data-index-in-node="0" data-path-to-node="2,1,0">建立底座外型</b>：</p>
-<p data-path-to-node="2,1,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="2,1,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="2,1,1,0,0">Shape</code> -&gt; <code data-index-in-node="32" data-path-to-node="2,1,1,0,0">Cylinder</code> (圓柱)。</p>
-<p data-path-to-node="2,1,1,1,0">設定尺寸：半徑 <code data-index-in-node="8" data-path-to-node="2,1,1,1,0">0.02</code>，高度 <code data-index-in-node="16" data-path-to-node="2,1,1,1,0">0.02</code>。</p>
-<p data-path-to-node="2,1,1,2,0"><b data-index-in-node="0" data-path-to-node="2,1,1,2,0">關鍵細節</b>：Webots 的幾何中心預設在物體正中心。因此圓柱有一半會埋在地下。</p>
-<p data-path-to-node="2,1,1,3,0"><b data-index-in-node="0" data-path-to-node="2,1,1,3,0">修正步驟</b>：修改 Shape 的 <code data-index-in-node="16" data-path-to-node="2,1,1,3,0">translation</code>，將 Z 軸設為 <code data-index-in-node="36" data-path-to-node="2,1,1,3,0">0.01</code> (高度的一半)，把它「提」到地面上。</p>
-<img alt="" height="243" src="./../images/圓柱t1.jpg" width="307"/></li>
-<li>
-<p data-path-to-node="2,2,0"><b data-index-in-node="0" data-path-to-node="2,2,0">Supervisor 設定</b>：</p>
-<p data-path-to-node="2,2,1,0,0">如果這個機器人未來需要畫線（如標題 Plotter），需要將 <code data-index-in-node="31" data-path-to-node="2,2,1,0,0">supervisor</code> 欄位設為 <code data-index-in-node="47" data-path-to-node="2,2,1,0,0">TRUE</code>。</p>
-<img alt="" height="72" src="./../images/supervison.jpg" width="238"/></li>
-</ol>
-<p></p>
-<p><b data-index-in-node="0" data-path-to-node="4">第二階段：建立第一節手臂 (Link 1) 與馬達</b></p>
-<ol data-path-to-node="5" start="1">
-<li>
-<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">新增關節 (HingeJoint)</b>：</p>
-<p data-path-to-node="5,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="5,0,1,0,0">children</code> 下新增 <code data-index-in-node="23" data-path-to-node="5,0,1,0,0">HingeJoint</code>。</p>
-<p data-path-to-node="5,0,1,1,0"><b data-index-in-node="0" data-path-to-node="5,0,1,1,0">參數設定</b>：展開 <code data-index-in-node="8" data-path-to-node="5,0,1,1,0">jointParameters</code>，確認 <code data-index-in-node="27" data-path-to-node="5,0,1,1,0">anchor</code> (錨點) 為 <code data-index-in-node="41" data-path-to-node="5,0,1,1,0">0 0 0</code>。將 <code data-index-in-node="49" data-path-to-node="5,0,1,1,0">axis</code> (旋轉軸) 改為 <code data-index-in-node="63" data-path-to-node="5,0,1,1,0">0 0 1</code> (繞 Z 軸旋轉)。</p>
-<img alt="" height="420" src="./../images/關節1.jpg" width="403"/></li>
-<li>
-<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">加入馬達 (Motor)</b>：</p>
-<p data-path-to-node="5,1,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,1,1,0,0">device</code> 欄位新增 <code data-index-in-node="14" data-path-to-node="5,1,1,0,0">RotationalMotor</code>。</p>
-<p data-path-to-node="5,1,1,1,0"><b data-index-in-node="0" data-path-to-node="5,1,1,1,0">重要</b>：將馬達 <code data-index-in-node="7" data-path-to-node="5,1,1,1,0">name</code> 命名為 <code data-index-in-node="16" data-path-to-node="5,1,1,1,0">"T1"</code> (程式碼控制時會用到)。</p>
-<img alt="" height="79" src="./../images/馬達T1.jpg" width="328"/></li>
-<li>
-<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">建立連桿實體 (Solid)</b>：</p>
-<p data-path-to-node="5,2,1,0,0">在 <code data-index-in-node="2" data-path-to-node="5,2,1,0,0">endPoint</code> 新增 <code data-index-in-node="14" data-path-to-node="5,2,1,0,0">Solid</code>。</p>
-<p data-path-to-node="5,2,1,1,0"><b data-index-in-node="0" data-path-to-node="5,2,1,1,0">定義形狀 (DEF)</b>：為這個 Solid 的 Shape 定義名稱 (如 <code data-index-in-node="37" data-path-to-node="5,2,1,1,0">LINK_SHAPE</code>)，方便後面重複使用。</p>
-<p data-path-to-node="5,2,1,2,0">外型設定：<code data-index-in-node="5" data-path-to-node="5,2,1,2,0">Box</code>，尺寸設為 X=0.02, Y=0.2 (長度), Z=0.02。</p>
-<img alt="" height="334" src="./../images/連趕1實體.jpg" width="429"/></li>
-<li>
-<p data-path-to-node="5,3,0"><b data-index-in-node="0" data-path-to-node="5,3,0">修正連桿位置 (Offset)</b>：</p>
-<p data-path-to-node="5,3,1,0,0"><b data-index-in-node="0" data-path-to-node="5,3,1,0,0">注意</b>：連桿中心點在 (0,0,0)，這樣旋轉時會像螺旋槳一樣中間旋轉。我們希望它像手臂一樣繞著端點轉。</p>
-<p data-path-to-node="5,3,1,1,0"><b data-index-in-node="0" data-path-to-node="5,3,1,1,0">修正步驟</b>：將 Solid 內部的 Shape 沿 Y 軸移動 <code data-index-in-node="31" data-path-to-node="5,3,1,1,0">0.1</code> (長度 0.2 的一半)。這樣旋轉中心 (Joint) 就會位於連桿的起始端。</p>
-<img alt="" height="358" src="./../images/修正連趕1位置.jpg" width="517"/></li>
-</ol><br />plotter << <a href='plotter.html'>Previous</a> <a href='模型.html'>Next</a> >> 模型</div>
+    <div id="tipue_search_content">plotter << <a href='plotter.html'>Previous</a> <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Next</a> >> 第一階段：建立基礎機器人與底座 (Base Setup)<br /><h1>製作過程簡述</h1>
+<br />plotter << <a href='plotter.html'>Previous</a> <a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>Next</a> >> 第一階段：建立基礎機器人與底座 (Base Setup)</div>
         
     <!-- footer -->
       <div class="container">

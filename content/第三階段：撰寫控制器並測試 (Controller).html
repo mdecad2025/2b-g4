@@ -2,6 +2,7 @@
         <head>
         <title>cad2025_hw</title>
         <meta charset="utf-8">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -95,6 +96,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -140,4 +142,70 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><li><a href='plotter.html'>plotter</a><ul><li><a href='製作過程簡述.html'>製作過程簡述</a><ul><li><a href='第一階段：建立基礎機器人與底座 (Base Setup).html'>第一階段：建立基礎機器人與底座 (Base Setup)</a><li><a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>第二階段：建立第一節手臂 (Link 1) 與馬達</a><li><a href='第三階段：撰寫控制器並測試 (Controller).html'>第三階段：撰寫控制器並測試 (Controller)</a><li><a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</a><li><a href='第五階段：建立第三節手臂 (Link 3) 與重複使用.html'>第五階段：建立第三節手臂 (Link 3) 與重複使用</a></li></ul><li><a href='模型.html'>模型</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">第二階段：建立第一節手臂 (Link 1) 與馬達 << <a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>Previous</a> <a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>Next</a> >> 第四階段：建立第二節手臂 (Link 2) —— 最困難的部分<br /><h1>第三階段：撰寫控制器並測試 (Controller)</h1>
+<ol data-path-to-node="8" start="1">
+<li>
+<p data-path-to-node="8,0,0"><b data-index-in-node="0" data-path-to-node="8,0,0">關聯控制器</b>：</p>
+<p data-path-to-node="8,0,1,0,0">在 Robot 的 <code data-index-in-node="10" data-path-to-node="8,0,1,0,0">controller</code> 欄位選擇 <code data-index-in-node="26" data-path-to-node="8,0,1,0,0">New...</code>，建立 Python 控制器。</p>
+<img alt="" height="569" src="./../images/控制程式.png" width="483"/></li>
+<li>
+<p data-path-to-node="8,1,0"><b data-index-in-node="0" data-path-to-node="8,1,0">撰寫程式碼</b>：</p>
+<p data-path-to-node="8,1,1,0,0">獲取馬達：<code data-index-in-node="5" data-path-to-node="8,1,1,0,0">motor = robot.getDevice("T1")</code></p>
+<p data-path-to-node="8,1,1,1,0">角度轉換：Webots 使用弧度 (Radian)。需將角度 (如 90度) 乘上 <code data-index-in-node="42" data-path-to-node="8,1,1,1,0">3.14159 / 180</code>。</p>
+<p data-path-to-node="8,1,1,2,0">設定位置：<code data-index-in-node="5" data-path-to-node="8,1,1,2,0">motor.setPosition(1.57)</code> (讓它轉 90 度測試)。</p>
+<img alt="" height="587" src="./../images/控制程式碼.png" width="565"/></li>
+<li>
+<p data-path-to-node="8,2,0"><b data-index-in-node="0" data-path-to-node="8,2,0">測試</b>：存檔並執行模擬，確認手臂是否有正確轉動。</p>
+<img alt="" height="44" src="./../images/存檔.png" width="453"/></li>
+</ol>
+<br />第二階段：建立第一節手臂 (Link 1) 與馬達 << <a href='第二階段：建立第一節手臂 (Link 1) 與馬達.html'>Previous</a> <a href='第四階段：建立第二節手臂 (Link 2) —— 最困難的部分.html'>Next</a> >> 第四階段：建立第二節手臂 (Link 2) —— 最困難的部分</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
