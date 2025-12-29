@@ -97,7 +97,7 @@
 <p data-path-to-node="12,2,1,2,0"><b data-index-in-node="0" data-path-to-node="12,2,1,2,0">修正位置</b>：將 Shape 沿 Y 軸移動 <code data-index-in-node="21" data-path-to-node="12,2,1,2,0">0.135</code> (0.27 的一半)，確保旋轉點在端點。</p>
 <img alt="" height="82" src="/images/link2.png" width="545"/></li>
 </ol>
-<h3 data-path-to-node="14"><b data-index-in-node="0" data-path-to-node="14">第五階段：建立第三節手臂 (Link 3) 與重複使用</b></h3>
+<h3>第五階段：建立第三節手臂 (Link 3) 與重複使用</h3>
 <ol data-path-to-node="15" start="1">
 <li>
 <p data-path-to-node="15,0,0"><b data-index-in-node="0" data-path-to-node="15,0,0">重複 Pose 轉換技巧</b>：</p>
@@ -152,7 +152,27 @@
 </li>
 </ul>
 <p></p>
-<h2>模型</h2>
+<h3 data-path-to-node="3"><b data-index-in-node="0" data-path-to-node="3">第六階段：準備工作與定義關鍵節點 (Preparation)</b></h3>
+<p data-path-to-node="4">在開始做右邊手臂之前，必須先整理左邊的架構，並為關鍵部位命名，以便稍後「參照」回來。</p>
+<ol data-path-to-node="5" start="1">
+<li>
+<p data-path-to-node="5,0,0"><b data-index-in-node="0" data-path-to-node="5,0,0">清理測試元件</b>：</p>
+<p data-path-to-node="5,0,1,0,0">將之前為了測試左臂動作而寫的暫時性 Python 程式碼移除，或將馬達歸位。</p>
+</li>
+<li>
+<p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">定義連接目標 (DEF LINK3)</b>：</p>
+<p data-path-to-node="5,1,1,0,0"><b data-index-in-node="0" data-path-to-node="5,1,1,0,0">非常重要</b>：找到左臂最末端的 <code data-index-in-node="14" data-path-to-node="5,1,1,0,0">Solid</code>（也就是 Link 3）。</p>
+<p data-path-to-node="5,1,1,1,0">在該 Solid 的 <code data-index-in-node="11" data-path-to-node="5,1,1,1,0">DEF</code> 欄位輸入名稱，例如 <code data-index-in-node="25" data-path-to-node="5,1,1,1,0">LINK3</code>。</p>
+<p data-path-to-node="5,1,1,2,0"><i data-index-in-node="0" data-path-to-node="5,1,1,2,0">目的：Webots 的結構是單向樹狀的，稍後右臂要「連回」左臂時，必須透過這個 DEF 名稱來找到它。</i></p>
+</li>
+<li>
+<p data-path-to-node="5,2,0"><b data-index-in-node="0" data-path-to-node="5,2,0">建立右側馬達座</b>：</p>
+<p data-path-to-node="5,2,1,0,0">複製左側的底座（Static Base），貼上一個新的。</p>
+<p data-path-to-node="5,2,1,1,0">將新底座沿 X 軸移動 <code data-index-in-node="12" data-path-to-node="5,2,1,1,0">0.2</code> 公尺（設定 <code data-index-in-node="22" data-path-to-node="5,2,1,1,0">translation</code> x: 0.2）。</p>
+<p data-path-to-node="5,2,1,2,0">為了視覺區分，可以修改 <code data-index-in-node="12" data-path-to-node="5,2,1,2,0">Appearance</code> 的顏色（例如改為藍色）。</p>
+</li>
+</ol>
+<h1>模型</h1>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="600px" src="https://mdecad2025.github.io/2b-g4/model/Plotteriam.stp.html" title="SolidWorks 組合件 3D 模型" width="100%">
     您的瀏覽器不支援內嵌框架。</iframe></p>
